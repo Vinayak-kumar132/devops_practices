@@ -14,7 +14,8 @@ provider "aws" {
 }
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-02d26659fd82cf299" 
+  count         = 3                       # Scaling Infra in Terraform
+  ami           = var.ami_id
   instance_type = "t2.micro"
 
   tags = {
